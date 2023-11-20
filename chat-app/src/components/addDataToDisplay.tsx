@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-
+import { addDoc, collection } from "firebase/firestore";
+import { firebaseDB } from "../firebase_connection";
 interface IAddDisplay {
   firstName: string;
   lastName: string;
@@ -13,7 +14,10 @@ export function AddDataToDisplay() {
   const { handleSubmit, register } = useForm<IAddDisplay>();
   const queryMutation = useMutation({
     mutationFn: async (data: IAddDisplay) => {
+      const collectionTest = collection(firebaseDB, "test");
+      addDoc(collectionTest, data);
       console.log(data);
+      return;
     },
   });
   return (
