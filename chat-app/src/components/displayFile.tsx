@@ -21,7 +21,15 @@ export function DisplayFile() {
   if (query.isLoading) return <div>Loading...</div>;
   return (
     <main>
-      Display data <pre>{JSON.stringify(query.data, null, 2)}</pre>
+      Display data{" "}
+      <pre>
+        {Object.values(query.data ?? {}).map((item, index) => (
+          <pre key={index}>
+            {JSON.stringify(item, null, 2)}
+            <hr />
+          </pre>
+        ))}
+      </pre>
     </main>
   );
 }

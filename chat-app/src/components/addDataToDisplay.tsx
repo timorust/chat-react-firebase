@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { addDoc, collection } from "firebase/firestore";
 import { firebaseDB } from "../firebase_connection";
+import { queryClient } from "../query_client";
 interface IAddDisplay {
   firstName: string;
   lastName: string;
@@ -18,6 +19,9 @@ export function AddDataToDisplay() {
       addDoc(collectionTest, data);
       console.log(data);
       return;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["test"] });
     },
   });
   return (

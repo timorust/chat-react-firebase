@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { DisplayFile } from "./components/displayFile";
 import { AddDataToDisplay } from "./components/addDataToDisplay";
 import { queryClient } from "./query_client";
+import { AuthComponent } from "./components/authComponent";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <h1>Timorust</h1>
       <DisplayFile />
       <AddDataToDisplay />
+      <AuthComponent />
     </QueryClientProvider>
   );
 }
