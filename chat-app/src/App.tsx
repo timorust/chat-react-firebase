@@ -9,10 +9,11 @@ import { AuthComponent } from "./components/authComponent";
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <h1>Timorust</h1>
-      <DisplayFile />
-      <AddDataToDisplay />
-      <AuthComponent />
+      <>
+        <AuthComponent />
+        <DisplayFile />
+        <AddDataToDisplay />
+      </>
     </QueryClientProvider>
   );
 }
