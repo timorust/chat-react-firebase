@@ -61,9 +61,17 @@ export function MessagesOpenChat() {
   return (
     <div>
       <h1>Open chat</h1>
-      <pre>
-        chat messages{JSON.stringify(messagesQuery.data?.data, null, 2)}
-      </pre>
+      <div>
+        {Object.entries(messagesQuery.data?.data.messages ?? {}).map(
+          (item, index) => {
+            return (
+              <div key={index}>
+                {item[0]} - {item[1].sender} -- {item[1].message}
+              </div>
+            );
+          }
+        )}
+      </div>
       <form
         onSubmit={handleSubmit(async (message) => {
           // debugger;
